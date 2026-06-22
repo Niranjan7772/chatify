@@ -6,8 +6,16 @@ import path from 'path'
 
 import authRoutes from './routes/auth.route.js'
 import messageRoutes from './routes/message.route.js'
+import { connectDB } from './lib/db.js'
 
 const app=express()
+
+app.use(express.json())
+
+// app.use((req, res, next) => {
+//   console.log("Body:", req.body);
+//   next();
+// });
 
 const __dirname=path.resolve()
 
@@ -29,4 +37,5 @@ if(process.env.NODE_ENV==="production"){
 
 app.listen(PORT,()=>{
     console.log(`Listening to ${PORT} port`)
+    connectDB()
 })
