@@ -1,8 +1,9 @@
 import jwt from "jsonwebtoken"
+import { ENV } from "./env.js"
 
 
 export const generateToken = (userId,res)=>{
-    const {JWT_SECRET} = process.env
+    const {JWT_SECRET} = ENV
     if(!JWT_SECRET){
         throw new Error("JWT Secret is not configured")
     }
@@ -15,7 +16,7 @@ export const generateToken = (userId,res)=>{
         httpOnly:true, //prevent XSS attack means cookie can be accesible onlt
         //in http not by js code
         sameSite:"strict", // CSRF Attack
-        secure:process.env.NODE_ENV=== "development" ? false : true
+        secure:ENV.NODE_ENV=== "development" ? false : true
     })
 
     return token
