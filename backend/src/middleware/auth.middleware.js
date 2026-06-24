@@ -1,5 +1,5 @@
-import { ENV } from "../lib/env"
-import User from "../models/User"
+import { ENV } from "../lib/env.js"
+import User from "../models/User.js"
 
 export const protectRoute = async(req,res,next) =>{
     try{
