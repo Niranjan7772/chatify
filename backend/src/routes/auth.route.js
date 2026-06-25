@@ -6,7 +6,7 @@ import { arcjetProtection } from '../middleware/arcjet.middleware.js'
 
 const router=express.Router()
 
-router.use(arcjetProtection)
+// router.use(arcjetProtection)
 
 router.get("/test",(req,res)=>{
     res.status(200).json({message:"You hit test"})
@@ -14,7 +14,7 @@ router.get("/test",(req,res)=>{
 
 router.post('/signup',signup)
 
-router.post('/login',arcjetProtection,login)
+router.post('/login',login)
 
 router.post('/logout',logout)
 
